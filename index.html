@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#09080e">
+  <meta name="description" content="AeroDIY — khám phá, thiết kế và mô phỏng hơn 30 dự án phần cứng DIY/STEM.">
+  <meta property="og:title" content="AeroDIY — Xưởng thiết kế phần cứng cùng AI">
+  <meta property="og:description" content="Từ ý tưởng đến BOM, wiring, CAD 3D, CFD và hướng dẫn lắp ráp.">
+  <meta property="og:image" content="https://aerovfx.github.io/AeroDIY/diy-app/public/og.png">
+  <title>AeroDIY — Xưởng thiết kế phần cứng cùng AI</title>
+  <link rel="icon" href="diy-app/public/favicon.png">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Chuyển tới nội dung</a>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home"><span class="logo"><img src="diy-app/public/logo-mark.png" alt=""></span><b>AeroDIY</b><em>BETA</em></a>
+      <button class="new-project" data-scroll="projects"><span>＋</span><b>Khám phá dự án</b><kbd>⌘ K</kbd></button>
+      <nav aria-label="Điều hướng chính">
+        <button class="nav-link active" data-scroll="home"><span>⌂</span>Trang chủ</button>
+        <button class="nav-link" data-scroll="projects"><span>◇</span>Dự án <i>34</i></button>
+        <button class="nav-link" data-scroll="workflow"><span>⌁</span>Quy trình</button>
+        <button class="nav-link" data-scroll="capabilities"><span>⌘</span>Công cụ</button>
+      </nav>
+      <p class="side-label">BỘ SƯU TẬP</p>
+      <div class="side-links">
+        <button data-category="UAV">UAV & Drone</button>
+        <button data-category="Robot">Robot & Automation</button>
+        <button data-category="Marine">Marine & Exploration</button>
+        <button data-category="Workshop">Workshop & Fabrication</button>
+      </div>
+      <div class="side-space"></div>
+      <a class="lab-card" href="diy-app/public/webgpu-spike.html"><span>∿</span><p><b>Mở WebGPU Lab</b><small>CFD · benchmark · validation</small></p><i>→</i></a>
+      <div class="maker"><span>DV</span><p><b>AeroVFX Studio</b><small>Open DIY platform</small></p><i class="status"></i></div>
+    </aside>
+
+    <main id="main">
+      <header class="topbar"><button class="menu" id="menu" aria-label="Mở menu">☰</button><button class="model">AeroDIY One <i></i>⌄</button><div><span>34 dự án · 8 hệ thống</span><button id="theme" aria-label="Đổi giao diện">☼</button><a href="https://github.com/aerovfx/AeroDIY" aria-label="GitHub">↗</a></div></header>
+
+      <section class="hero" id="home">
+        <div class="stars"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">XƯỞNG THIẾT KẾ PHẦN CỨNG CÙNG AI</p>
+          <h1>Ý tưởng lớn.<br><em>Tự tay chế tạo.</em></h1>
+          <p>Tìm một dự án phù hợp, hiểu hệ thống bên trong và đi từ bản mô tả đầu tiên đến một thiết kế có thể lắp ráp.</p>
+          <div class="hero-actions"><button class="primary" data-scroll="projects">Khám phá 34 dự án <span>→</span></button><button class="secondary" data-scroll="workflow">Xem cách hoạt động</button></div>
+          <div class="proof"><span><b>34</b><small>MẪU DỰ ÁN</small></span><span><b>8</b><small>HỆ THỐNG KỸ THUẬT</small></span><span><b>3D</b><small>CAD & MÔ PHỎNG</small></span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <img src="diy-app/public/long-range-uav-visual.png" alt="Mô hình UAV tầm xa AeroDIY">
+          <div class="float-card fc-one"><span>✓</span><p><b>CAD VALIDATED</b><small>Feature tree · 96/100</small></p></div>
+          <div class="float-card fc-two"><span>∿</span><p><b>CFD READY</b><small>2D LBM · WebGPU 3D</small></p></div>
+        </div>
+      </section>
+
+      <section class="intro" id="capabilities">
+        <div class="section-head"><div><p class="eyebrow">MỘT WORKSPACE · TRỌN QUY TRÌNH</p><h2>Không chỉ là một thư viện ý tưởng.</h2></div><p>AeroDIY kết nối thiết kế điện, cơ khí và mô phỏng thành một quy trình có thể kiểm tra.</p></div>
+        <div class="cap-grid">
+          <article><span>01</span><i>⌁</i><h3>AI Design Brief</h3><p>Mô tả mục tiêu, ngân sách và giới hạn. Hệ thống chuyển thành yêu cầu kỹ thuật rõ ràng.</p></article>
+          <article><span>02</span><i>▦</i><h3>BOM & Sourcing</h3><p>Danh sách linh kiện, số lượng, giá dự toán, nguồn mua và thứ tự đặt hàng.</p></article>
+          <article><span>03</span><i>◇</i><h3>CAD 3D</h3><p>Feature tree tham số, exploded view và xuất FCStd, STEP, STL để chế tạo.</p></article>
+          <article><span>04</span><i>∿</i><h3>CFD Simulation</h3><p>Hầm gió LBM 2D/3D với WebGPU để so sánh thiết kế trước khi làm thật.</p></article>
+          <article><span>05</span><i>⌘</i><h3>Wiring</h3><p>Sơ đồ nguồn, tín hiệu, pinout và liên kết giữa mọi thành phần trong hệ thống.</p></article>
+          <article><span>06</span><i>✓</i><h3>Build Guide</h3><p>Quy trình lắp, checklist an toàn, kiểm thử và gói tài liệu có thể tải xuống.</p></article>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <div class="section-head"><div><p class="eyebrow">PROJECT EXPLORER</p><h2>Tìm dự án tiếp theo của bạn.</h2></div><p>Khám phá theo lĩnh vực hoặc tìm kiếm theo công nghệ, nhiệm vụ và loại thiết bị.</p></div>
+        <div class="explorer-bar">
+          <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Tìm drone, robot, máy in 3D…" autocomplete="off"></label>
+          <div class="filters" id="filters"><button class="active" data-filter="All">Tất cả</button><button data-filter="UAV">UAV</button><button data-filter="Robot">Robot</button><button data-filter="Marine">Marine</button><button data-filter="Workshop">Workshop</button><button data-filter="IoT">IoT</button></div>
+        </div>
+        <div class="project-meta"><span><b id="result-count">0</b> dự án phù hợp</span><button id="clear-filter">Đặt lại bộ lọc</button></div>
+        <div class="project-grid" id="project-grid"></div>
+      </section>
+
+      <section class="workflow" id="workflow">
+        <div class="workflow-copy"><p class="eyebrow">TỪ Ý TƯỞNG ĐẾN PHẦN CỨNG</p><h2>Một luồng làm việc<br>không bỏ sót bước.</h2><p>Mỗi thiết kế đi qua các gate có thể kiểm chứng trước khi mua linh kiện hoặc chế tạo.</p><button class="primary" data-scroll="projects">Chọn dự án để bắt đầu <span>→</span></button></div>
+        <ol>
+          <li><span>01</span><div><b>Định nghĩa nhiệm vụ</b><p>Chốt nhu cầu, môi trường, tải trọng, ngân sách và tiêu chí thành công.</p></div><i>BRIEF</i></li>
+          <li><span>02</span><div><b>Thiết kế hệ thống</b><p>Phân rã cơ khí, điện, điều khiển; chọn linh kiện và dựng wiring.</p></div><i>BOM</i></li>
+          <li><span>03</span><div><b>Dựng & kiểm tra</b><p>Tạo CAD 3D, kiểm khoảng hở, khối lượng và chạy mô phỏng phù hợp.</p></div><i>CAD · CFD</i></li>
+          <li><span>04</span><div><b>Chế tạo an toàn</b><p>Lắp theo checklist, test từng subsystem rồi mới vận hành toàn hệ thống.</p></div><i>BUILD</i></li>
+        </ol>
+      </section>
+
+      <section class="cta"><div><p class="eyebrow">AERODIY · OPEN HARDWARE STUDIO</p><h2>Sẵn sàng biến ý tưởng<br>thành một hệ thống thật?</h2></div><button class="primary" data-scroll="projects">Khám phá ngay <span>→</span></button></section>
+      <footer><a class="brand mini" href="#home"><img src="diy-app/public/logo-mark.png" alt=""><b>AeroDIY</b></a><p>Thiết kế có trách nhiệm · mô phỏng trước · chế tạo an toàn.</p><div><a href="https://github.com/aerovfx/AeroDIY">GitHub</a><a href="README.md">Tài liệu</a><a href="diy-app/public/webgpu-spike.html">GPU Lab</a></div></footer>
+    </main>
+  </div>
+
+  <dialog id="project-dialog"><button class="dialog-close" aria-label="Đóng">×</button><div class="dialog-visual"><img id="dialog-image" alt=""><span id="dialog-category"></span></div><div class="dialog-copy"><p class="eyebrow">PROJECT OVERVIEW</p><h2 id="dialog-title"></h2><p id="dialog-description"></p><div class="dialog-stats" id="dialog-stats"></div><h3>Bạn sẽ khám phá</h3><ul id="dialog-features"></ul><div class="dialog-actions"><button class="primary" id="dialog-start">Mở trong AeroDIY <span>→</span></button><button class="secondary dialog-close-button">Quay lại</button></div></div></dialog>
+  <script src="site.js"></script>
+</body>
+</html>
