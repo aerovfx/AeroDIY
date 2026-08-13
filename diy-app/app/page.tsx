@@ -137,6 +137,7 @@ const designStages = [
 ];
 
 export default function Home() {
+  const [landingOpen, setLandingOpen] = useState(true);
   const [projectMode, setProjectMode] = useState<ProjectMode>("mini");
   const [projectMenuOpen, setProjectMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<Tab>("INFO");
@@ -331,6 +332,66 @@ export default function Home() {
     } finally {
       setExportBusy(false);
     }
+  }
+
+  if (landingOpen) {
+    const featuredProjects = projectTemplates.slice(0, 5);
+    const openProject = (mode: ProjectMode) => {
+      selectProject(mode);
+      setLandingOpen(false);
+    };
+    const startDesign = () => {
+      if (!prompt.trim()) return;
+      setLandingOpen(false);
+      runGenerate(prompt.trim());
+    };
+
+    return (
+      <main className="diy-home">
+        <aside className="diy-home-sidebar" aria-label="Điều hướng DIY Studio">
+          <button className="diy-home-brand" onClick={() => setLandingOpen(true)}>
+            <span className="diy-home-logo"><img src="/logo-mark.png" alt="" /></span>
+            <strong>AeroDIY</strong><em>BETA</em>
+          </button>
+          <button className="diy-new-build" onClick={() => setPrompt("")}><span>＋</span><b>Dự án mới</b><kbd>⌘ K</kbd></button>
+          <nav className="diy-home-nav">
+            <button className="active"><span>⌂</span>Thiết kế</button>
+            <button onClick={() => openProject("mini")}><span>◇</span>Khám phá <i>MỚI</i></button>
+          </nav>
+          <p className="diy-home-label">DỰ ÁN GẦN ĐÂY</p>
+          <div className="diy-recent-list">
+            {featuredProjects.slice(0, 3).map((item) => <button key={item.mode} onClick={() => openProject(item.mode)}>{item.title}</button>)}
+          </div>
+          <div className="diy-sidebar-spacer" />
+          <button className="diy-toolkit" onClick={() => openProject("mini")}><span>⌘</span><p><b>Mở DIY Workbench</b><small>CAD · BOM · CFD · Wiring</small></p><i>→</i></button>
+          <div className="diy-profile"><span>DV</span><p><b>Maker của AeroDIY</b><small>Xưởng sáng tạo cá nhân</small></p><button aria-label="Cài đặt">•••</button></div>
+        </aside>
+
+        <section className="diy-home-main">
+          <header className="diy-home-top"><button>AeroDIY One <i />⌄</button><div><span>34 mẫu dự án</span><button aria-label="Đổi giao diện">☼</button></div></header>
+          <div className="diy-stars" aria-hidden="true" />
+          <div className="diy-home-content">
+            <p className="diy-kicker">XƯỞNG THIẾT KẾ PHẦN CỨNG CÙNG AI</p>
+            <h1>Hôm nay bạn muốn<br /><em>chế tạo điều gì?</em></h1>
+            <p className="diy-subtitle">Từ một ý tưởng đến BOM, sơ đồ điện, CAD 3D và hướng dẫn lắp ráp — tất cả trong một không gian.</p>
+            <div className="diy-suggestions" aria-label="Gợi ý dự án">
+              <button onClick={() => setPrompt("Thiết kế một drone FPV nhỏ gọn, dễ lắp ráp và có ngân sách dưới 150 USD")}><span>⌁</span><p><b>Thiết kế drone</b><small>Từ nhiệm vụ đến cấu hình bay</small></p><i>↗</i></button>
+              <button onClick={() => setPrompt("Thiết kế một robot tự hành tránh vật cản dùng LiDAR và camera")}><span>⚙</span><p><b>Chế tạo robot</b><small>Cơ khí, điện tử và điều khiển</small></p><i>↗</i></button>
+              <button onClick={() => setPrompt("Tạo một dự án nhà thông minh tiết kiệm năng lượng, dễ mở rộng")}><span>⌂</span><p><b>Nhà thông minh</b><small>Cảm biến và tự động hóa</small></p><i>↗</i></button>
+            </div>
+            <div className="diy-prompt-shell">
+              <textarea value={prompt} onChange={(event) => setPrompt(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); startDesign(); } }} placeholder="Mô tả thứ bạn muốn chế tạo…" aria-label="Mô tả dự án DIY" />
+              <div><span><button aria-label="Đính kèm tệp">＋</button><button>⌁ Suy luận</button></span><button className="diy-home-send" disabled={!prompt.trim()} onClick={startDesign} aria-label="Bắt đầu thiết kế">↑</button></div>
+            </div>
+            <p className="diy-home-note">AeroDIY có thể mắc lỗi. Luôn kiểm tra an toàn điện, cơ khí và quy định trước khi chế tạo.</p>
+          </div>
+          <div className="diy-project-strip">
+            <span>MẪU NỔI BẬT</span>
+            <div>{featuredProjects.map((item) => <button key={item.mode} onClick={() => openProject(item.mode)}><b>{item.title}</b><small>{item.subtitle}</small><i>→</i></button>)}</div>
+          </div>
+        </section>
+      </main>
+    );
   }
 
   return (
