@@ -20,6 +20,7 @@
 /out/
 /dist/
 /dist-mcp/
+/pages-dist/
 
 # Cloudflare / Sites local state
 /.wrangler/

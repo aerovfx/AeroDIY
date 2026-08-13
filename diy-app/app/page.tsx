@@ -136,6 +136,13 @@ const designStages = [
   { phase: "PHASE 7", label: "Review & improve", detail: "Tổng hợp vấn đề từ mua hàng đến vận hành, cập nhật BOM và quy trình bản sau.", output: "Lessons learned · BOM/process revision" },
 ];
 
+function publicAsset(pathname: string) {
+  if (typeof window !== "undefined" && window.location.pathname.startsWith("/AeroDIY")) {
+    return `/AeroDIY${pathname}`;
+  }
+  return pathname;
+}
+
 export default function Home() {
   const [landingOpen, setLandingOpen] = useState(true);
   const [projectMode, setProjectMode] = useState<ProjectMode>("mini");
@@ -350,7 +357,7 @@ export default function Home() {
       <main className="diy-home">
         <aside className="diy-home-sidebar" aria-label="Điều hướng DIY Studio">
           <button className="diy-home-brand" onClick={() => setLandingOpen(true)}>
-            <span className="diy-home-logo"><img src="/logo-mark.png" alt="" /></span>
+            <span className="diy-home-logo"><img src={publicAsset("/logo-mark.png")} alt="" /></span>
             <strong>AeroDIY</strong><em>BETA</em>
           </button>
           <button className="diy-new-build" onClick={() => setPrompt("")}><span>＋</span><b>Dự án mới</b><kbd>⌘ K</kbd></button>
@@ -398,7 +405,7 @@ export default function Home() {
     <main className="app-shell">
       <header className="topbar">
         <button className="brand" aria-label="Chọn dự án DIY STEM" onClick={() => setProjectMenuOpen((value) => !value)}>
-          <img className="brand-mark" src="/logo-mark.png" alt="AeroVFX Studio" width={26} height={26} /><span>{project.name}</span><i>⌄</i>
+          <img className="brand-mark" src={publicAsset("/logo-mark.png")} alt="AeroVFX Studio" width={26} height={26} /><span>{project.name}</span><i>⌄</i>
         </button>
         {projectMenuOpen && (
           <div className="project-menu">
@@ -683,7 +690,7 @@ function InfoView({ project, cadProject, total, version, committed, toolRuns, el
     <div className="info-grid">
       <section className="project-visual">
         <div className="visual-label"><span>DESIGN PREVIEW</span><button onClick={onOpenMech}>OPEN 3D ↗</button></div>
-        <div className={`info-cad ${project.visual ? "reference-render" : ""}`}>{project.visual ? <img src={project.visual} alt={`${project.name} reference render`} /> : <CadViewport sceneSpec={cadProject.scene} view="iso" exploded={false} resetToken={0} />}</div>
+        <div className={`info-cad ${project.visual ? "reference-render" : ""}`}>{project.visual ? <img src={publicAsset(project.visual)} alt={`${project.name} reference render`} /> : <CadViewport sceneSpec={cadProject.scene} view="iso" exploded={false} resetToken={0} />}</div>
         <div className="visual-caption"><span>{project.key === "generated" ? "GENERATED / CUSTOM DESIGN" : project.key === "exosuit" ? "POWERED EXOSKELETON / ASSIST" : project.key === "liftboot" ? "HYDRAULIC BOOT / 4 CYLINDERS" : project.key === "smarthome" ? "SMART HOME / PI + ZIGBEE" : project.key === "cargodrone" ? "CARGO QUAD / PIXHAWK 6S" : project.key === "microdrone" ? "MICRO QUAD / ESP32-C3" : project.key === "emotobike" ? "ELECTRIC MX / 72V · SEVCON" : project.key === "biodiesel" ? "PROCESS RIG / ARDUINO MEGA" : project.key === "cncmill" ? "DESKTOP CNC / GRBL 3-AXIS" : project.key === "largeprinter" ? "LARGE FDM / SKR 2 · TMC2209" : project.key === "cybertool" ? "SECURITY TOOL / STM32WB55" : project.key === "endurance" ? "BLENDED WING / 8S TWIN MOTOR" : project.key === "deliverydrone" ? "DELIVERY QUAD / PIXHAWK" : project.key === "printer3d" ? "DIY 3D PRINTER / RAMPS 1.4" : project.key === "arglasses" ? "AR WEARABLE / ESP32-S3" : project.key === "companion" ? "DESK GADGET / ESP32-S3 + TFT" : project.key === "filmingdrone" ? "7-INCH CINE / KAKUTE H7" : project.key === "garden" ? "IRRIGATION IOT / 6 ZONES" : project.key === "walle" ? "TRACKED ROBOT / RPi 5 + ESP32" : project.key === "plasma" ? "SPACE PROPULSION / CONCEPT" : project.key === "fpvracer" ? "5-INCH FPV RACER / KAKUTE H7" : project.key === "scara" ? "4-AXIS SCARA / ESP32" : project.key === "windharvester" ? "WIND TURBINE / MPPT + SUPERCAP" : project.key === "rcboat" ? "RC BOAT / TETHERED CAMERA" : project.key === "submarine" ? "UNDERWATER ROV / 6 THRUSTERS" : project.key === "robodog" ? "QUADRUPED / 12× BLDC · CAN" : project.key === "humanoid" ? "170CM HUMANOID / JETSON ORIN" : project.key === "mobilerobot" ? "GROUND ROBOT / STM32 + ESP32" : project.key === "ornithopter" ? "DRAGONFLY ORNITHOPTER / MICRO AIO" : project.key === "observer" ? "450MM CAMERA QUAD / CUBE ORANGE" : project.key === "vtol" ? "VTOL QUADPLANE / PIXHAWK 6C" : project.key === "usv" ? "5.2M SURVEY USV / TWIN WATERJET" : project.key === "mother" ? "6-CELL CIVIL UAV CARRIER" : project.key === "long-range" ? "FIXED-WING / PIXHAWK 6C" : "CARBON FRAME / F4 AIO"}</span><span>{cadProject.metrics.dimensionsMm.join(" × ")} MM</span></div>
       </section>
       <section className="project-summary">
