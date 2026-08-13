@@ -11,6 +11,7 @@
   <title>AeroDIY — Xưởng thiết kế phần cứng cùng AI</title>
   <link rel="icon" href="diy-app/public/favicon.png">
   <link rel="stylesheet" href="site.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
 <body>
   <a class="skip" href="#main">Chuyển tới nội dung</a>
@@ -95,5 +96,6 @@
 
   <dialog id="project-dialog"><button class="dialog-close" aria-label="Đóng">×</button><div class="dialog-visual"><img id="dialog-image" alt=""><span id="dialog-category"></span></div><div class="dialog-copy"><p class="eyebrow">PROJECT OVERVIEW</p><h2 id="dialog-title"></h2><p id="dialog-description"></p><div class="dialog-stats" id="dialog-stats"></div><h3>Bạn sẽ khám phá</h3><ul id="dialog-features"></ul><div class="dialog-actions"><button class="primary" id="dialog-start">Mở trong AeroDIY <span>→</span></button><button class="secondary dialog-close-button">Quay lại</button></div></div></dialog>
   <script src="site.js"></script>
+  <script type="module" src="procedural-models.js"></script>
 </body>
 </html>
