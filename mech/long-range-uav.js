@@ -56,12 +56,12 @@ export function createLongRangeUAV(){
   const belly=mesh(new THREE.BoxGeometry(.72,.36,1.2),panel,"ventral-payload-bay");belly.position.set(0,-.43,.18);belly.geometry.translate(0,0,0);fuselage.add(belly);
 
   const wing=group(root,"main-wing-assembly");wing.position.set(0,.1,.12);
-  for(const side of [-1,1]){const panelMesh=mesh(taperedPanel(3.55,1.08,.31,.095,-.28),paint,`${side<0?"port":"starboard"}-wing`);panelMesh.scale.x=side;panelMesh.rotation.x=-Math.PI/2;wing.add(panelMesh);
+  for(const side of [-1,1]){const panelMesh=mesh(taperedPanel(3.55,.76,.2,.075,-.18),paint,`${side<0?"port":"starboard"}-wing`);panelMesh.scale.x=side;panelMesh.rotation.x=-Math.PI/2;wing.add(panelMesh);
     const seam=mesh(new THREE.BoxGeometry(1.25,.012,.018),dark,`${side<0?"port":"starboard"}-aileron-seam`);seam.position.set(side*2.68,.055,-.26);seam.rotation.y=side*.08;wing.add(seam);
     const lamp=mesh(new THREE.SphereGeometry(.045,12,8),side<0?red:green,`${side<0?"red":"green"}-navigation-light`);lamp.position.set(side*3.53,.02,-.27);wing.add(lamp)}
 
   const tail=group(root,"v-tail-assembly");tail.position.z=-1.78;tail.position.y=.18;
-  for(const side of [-1,1]){const fin=mesh(taperedPanel(1.15,.62,.22,.075,.05),paint,`${side<0?"port":"starboard"}-tail-plane`);fin.rotation.set(-Math.PI/2,side*.22,side*.82);fin.position.x=side*.08;tail.add(fin)}
+  for(const side of [-1,1]){const fin=mesh(taperedPanel(1.08,.48,.16,.06,.03),paint,`${side<0?"port":"starboard"}-tail-plane`);fin.scale.x=side;fin.rotation.x=-Math.PI/2;fin.rotation.z=-side*.7;fin.position.x=side*.06;tail.add(fin)}
 
   for(const side of [-1,1])root.add(buildNacelle(side));
   const dorsal=group(root,"dorsal-engine-pod");dorsal.position.set(0,.45,-1.15);
@@ -69,9 +69,9 @@ export function createLongRangeUAV(){
   const dorsalInlet=mesh(new THREE.TorusGeometry(.18,.03,8,28),dark,"dorsal-inlet");dorsalInlet.position.z=.3;dorsal.add(dorsalInlet);
 
   const sensor=group(root,"eo-ir-gimbal-pivot");sensor.position.set(0,-.42,1.75);
-  sensor.add(mesh(new THREE.SphereGeometry(.25,28,18),panel,"gimbal-shell"));
-  const lens=mesh(new THREE.CylinderGeometry(.105,.105,.035,24),glass,"eo-ir-lens");lens.rotation.x=Math.PI/2;lens.position.set(.1,-.025,.22);sensor.add(lens);
-  const smallLens=mesh(new THREE.CylinderGeometry(.065,.065,.036,20),glass,"secondary-lens");smallLens.rotation.x=Math.PI/2;smallLens.position.set(-.105,-.07,.22);sensor.add(smallLens);
+  sensor.add(mesh(new THREE.SphereGeometry(.18,28,18),panel,"gimbal-shell"));
+  const lens=mesh(new THREE.CylinderGeometry(.075,.075,.03,24),glass,"eo-ir-lens");lens.rotation.x=Math.PI/2;lens.position.set(.065,-.018,.165);sensor.add(lens);
+  const smallLens=mesh(new THREE.CylinderGeometry(.045,.045,.031,20),glass,"secondary-lens");smallLens.rotation.x=Math.PI/2;smallLens.position.set(-.075,-.05,.165);sensor.add(smallLens);
   buildGear(root);
 
   const antenna=mesh(new THREE.CylinderGeometry(.025,.035,.27,10),panel,"gps-antenna");antenna.position.set(-.12,.5,-.25);root.add(antenna);
